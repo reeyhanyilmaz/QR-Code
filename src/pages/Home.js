@@ -9,14 +9,19 @@ function Home() {
   const [text, setText] = useState("");
   const [imageSrc, setImageSrc] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
 
   const [inputVal, setInputVal] = useState("");
   const [showButton, setShowButton] = useState(false);
 
-  const handleLogin = () => {
-    if (inputVal === "qrHype2022") {
+  const handleLogin = async () => {
+    const {data} = await axios.get(`https://marineadvisor.xyz/admin/${inputVal}`);
+    console.log('data :>> ', data);
+    if(data.success === true){
       setShowButton(true);
+      setError("")
+    }else{
+      setError("Hatalı Parola!")
     }
   };
 
@@ -36,7 +41,7 @@ function Home() {
       const url = `https://hypeinvitation.netlify.app/qrcode/${code}`;
       setText(url);
     } else {
-      setError(true);
+      setError("Bir hata oluştu");
     }
     setLoading(false);
   };
@@ -67,7 +72,7 @@ function Home() {
         </ul>
 
         {loading && <div className="loading">loading...</div>}
-        {error && <div className="loading">Bir hata oluştu.</div>}
+        {error && <div className="loading">{error}</div>}
 
         {showButton ? (
           <button onClick={handleGenerate}>Qr Code Oluştur</button>
