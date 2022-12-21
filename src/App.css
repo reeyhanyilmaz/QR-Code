@@ -96,10 +96,11 @@ button {
   color: white;
   border: none;
   border-radius: 8px;
-  padding: 10px 15px;
   cursor: pointer;
   text-decoration: none;
-  width: 55px;
+  margin-bottom: 20px;
+  width: 100px;
+  padding: 13px 0;
 }
 
 
@@ -120,6 +121,5 @@ button {
 .App li {
   text-align: start;
   width: 100%;
-  background-color: 'green';
   font-size: 0.9rem;
 }
