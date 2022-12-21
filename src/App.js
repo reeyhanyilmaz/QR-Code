@@ -1,6 +1,8 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import { useQRCode } from "next-qrcode";
+import { nanoid } from "nanoid";
+import axios from "axios";
 
 function App() {
   const { Image } = useQRCode();
@@ -11,33 +13,25 @@ function App() {
   const handleGenerate = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const code = Math.floor(
-      Math.random() * (999999 - 100001) + 100001
-    ).toString();
+    const code = nanoid();
     console.log("code", code);
 
-    const res = await fetch(
-      "https://63a209a0ba35b96522eecbec.mockapi.io/qrcodes",
-      {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          code: code,
-        }),
-      }
-    );
+    const { data } = await axios.post("https://marineadvisor.xyz/qrcodes", {
+      code: code,
+    });
 
-    const data = await res.json();
-    console.log("data :>> ", data);
+    console.log("data", data);
 
-    const res2 = await fetch(
-      `https://63a209a0ba35b96522eecbec.mockapi.io/qrcodes/${data.id}`
-    );
+    // if(data.success){
 
-    const data2 = await res2.json();
-    console.log("data2 :>> ", data2);
+    // }
+
+    // const res2 = await fetch(
+    //   `https://63a209a0ba35b96522eecbec.mockapi.io/qrcodes/${data.id}`
+    // );
+
+    // const data2 = await res2.json();
+    // console.log("data2 :>> ", data2);
 
     const qrLink = `https://63a209a0ba35b96522eecbec.mockapi.io/qrcodes/${data.id}`;
 
