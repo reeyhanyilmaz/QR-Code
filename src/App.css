@@ -81,17 +81,17 @@ button {
   color: #230a4a;
 }
 
-.qrCode{
+.qrCode {
   background-color: #fff;
   margin-top: 20px;
 }
 
-.qrCode img{
+.qrCode img {
   width: 200px;
   height: 200px;
 }
 
-.downloadButton{
+.downloadButton {
   background-color: #230a4a;
   color: white;
   border: none;
@@ -100,4 +100,26 @@ button {
   cursor: pointer;
   text-decoration: none;
   width: 55px;
+}
+
+
+/* qr sayfası */
+.qrPageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: calc(100vh - 140px);
+}
+
+.qrPageContainer h1 {
+  text-align: center;
+  color: #230a4a;
+}
+
+.App li {
+  text-align: start;
+  width: 100%;
+  background-color: 'green';
+  font-size: 0.9rem;
 }
