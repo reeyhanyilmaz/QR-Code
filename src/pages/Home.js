@@ -33,7 +33,7 @@ function Home() {
     console.log("data", data);
 
     if (data.success) {
-      const url = `http://localhost:3000/qrcode/${code}`;
+      const url = `https://hypeinvitation.netlify.app/qrcode/${code}`;
       setText(url);
     } else {
       setError(true);
